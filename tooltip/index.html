@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tooltip</title>
+    <style>
+        body {
+  background: #d1d1d1;
+}
+
+table, tr, td {
+  border: 1px solid #000;
+}
+
+table {
+  margin: 50px auto;
+}
+table td {
+  padding: 8px 12px;
+}
+
+[data-tooltip] {
+  position: relative;
+  cursor: help;
+  text-decoration: underline;
+}
+
+[data-tooltip][data-position=droite]::before {
+  top: -50%;
+  left: 105%;
+  transform: translateX(-20px);
+}
+[data-tooltip][data-position=bas]::before {
+  top: 150%;
+  transform: translateY(-20px);
+}
+[data-tooltip][data-position=gauche]::before {
+  top: -50%;
+  left: auto;
+  right: 105%;
+  transform: translateX(-20px);
+}
+[data-tooltip]:hover::before {
+  transform: translate(0);
+  opacity: 1;
+}
+
+[data-tooltip]::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  width: 150px;
+  display: block;
+  background: white;
+  padding: 10px;
+  top: -50px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+  text-align: center;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s cubic-bezier(0.4,0 ,0.2,1);
+}
+
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td><span data-tooltip="Affichage en haut">Haut</span></td>
+            <td><span data-tooltip="Affichage à droite" data-position="droite">Droite</span></td>
+        </tr>
+        <tr>
+            <td><span data-tooltip="Affichage en bas" data-position="bas">Bas</span></td>
+            <td><span data-tooltip="Affichage à gauche" data-position="gauche">Gauche</span></td>
+        </tr>
+    </table>
+</body>
+</html>

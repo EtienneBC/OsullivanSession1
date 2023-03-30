@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>My First Web Page</title>
+    <link rel="shortcut icon" href="#">
+
+    <style>
+        body {
+            background: #5b7281;
+            font-family: "Open Sans", sans-serif;
+            font-weight: 300;
+        }
+
+        #registration {
+            width: 480px;
+            background: #fff;
+            padding: 1em;
+            margin: 2em auto;
+        }
+
+        h1 {
+            font-size: 2em;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 1em;
+        }
+
+        p {
+            padding: 0.5em 0;
+        }
+
+        p:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        label {
+            display: inline-block;
+            width: 40%;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        textarea,
+        select {
+            border: none;
+            padding: 0.5em;
+            background-color: #ecf0f1;
+            font: inherit;
+            float: right;
+            width: 50%;
+        }
+
+        textarea {
+            max-width: 50%;
+            min-width: 50%;
+        }
+
+        button {
+            border: none;
+            background: #5b7281;
+            width: 100%;
+            padding: 1em 0;
+            font: inherit;
+            color: #ecf0f1;
+            font-weight: 400;
+        }
+
+        #errorMessages {
+            width: 480px;
+            margin: 2em auto;
+            background-color: #ecf0f1;
+            overflow: hidden;
+        }
+
+        #errorMessages li {
+            padding: 1em;
+            background-color: #e74c3c;
+            color: #ecf0f1;
+            font-weight: 400;
+            margin: 0 1em;
+            margin-bottom: 1em;
+        }
+
+        #errorMessages li:first-child {
+            margin-top: 1em;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="#" id="registration" method="post">
+        <h1>Créer un compte</h1>
+
+        <p>
+            <label for="username">Nom d'utilisateur:</label>
+            <input type="text" id="username" name="username" />
+        </p>
+
+        <p>
+            <label for="password1">Mot de passe:</label>
+            <input type="password" id="password1" name="password1" />
+        </p>
+
+        <p>
+            <label for="password2">Confirmez le mot de passe:</label>
+            <input type="password" id="password2" name="password2" />
+        </p>
+
+        <p>
+            <input type="radio" id="genderM" name="gender" value="male" />
+            <label for="genderM">Homme</label>
+        </p>
+
+        <p>
+            <input type="radio" id="genderF" name="gender" value="female" />
+            <label for="genderF">Femme</label>
+        </p>
+
+        <p>
+            <label for="continent">Votre continent</label>
+            <select name="continent" id="continent">
+                <option value="">Choisissez votre continent</option>
+                <option value="africa">Afrique</option>
+                <option value="northamerica">Amérique du Nord</option>
+                <option value="southamerica">Amérique du Sud</option>
+                <option value="antarctica">Antarctique</option>
+                <option value="asia">Asie</option>
+                <option value="australia">Australie</option>
+                <option value="europe">Europe</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="desc">Décrivez-vous</label>
+            <textarea name="description" id="desc" cols="30" rows="10"></textarea>
+        </p>
+
+        <p>
+            <button type="submit" id="register">S'enregistrer!</button>
+        </p>
+
+    </form>
+
+    <div id="errorMessages"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', init);
+
+        function init() {
+            regForms = document.forms['registration'];
+
+            regForms['register'].onclick = validateForm;
+        }
+
+        function validateForm(event) {
+            event.preventDefault;
+
+            var errorMessages = Array();
+
+            if (!regForms['username'].value) {
+                errorMessages.push('Veuillez entrez un nom d\'utilisateur');
+            }
+            if (regForms['username'].value.length <= 4 || regForms['username'].value.length > 10) {
+                errorMessages.push('Veuillez entrer un nom d\'utilisateur entre 4 et 10 caracteres');
+            }
+            if (!regForms['password1'].value) {
+                errorMessages.push('Veuillez saisir un  mot de passe');
+            }
+            if (!regForms['password2'].value) {
+                errorMessages.push('Veuillez saisir un  mot de passe');
+            }
+            if (regForms['password1'].value && regForms['password2'].value) {
+                if (regForms['password1'].value !== regForms['password2'].value) {
+                    errorMessages.push('les mots de passes ne correspondent pas');
+                }
+            }
+            var isChecked = false;
+            for (var i = 0; i < regForms['gender'].length; i++) {
+                if (regForms['gender'][i].cheked) {
+                    isChecked = true;
+                    break;
+                }
+            }
+            if (!isChecked) {
+                errorMessages.push('Veuillez choisir un sexe');
+            }
+            if (!regForms['description'].value) {
+                errorMessages.push('Veuillez entrer une description');
+            }
+            displayErreurs(errorMessages);
+
+            if (errorMessages.length) {
+                return false;
+            }
+        }
+
+        function displayErreurs(erreurs) {
+            let errorMessages = document.getElementById('errorMessages');
+
+            if (!erreurs.length) {
+                errorMessages.innerHTML = '';
+                alert('bienvenu!')
+                return false;
+            }
+
+            let messages = '<ul>';
+
+            for (let i = 0; i < erreurs.length; i++) {
+                messages += "<li>" + erreurs[i] + ' </li>';
+            }
+            messages += '</ul>'
+
+            errorMessages = messages;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<button type="button" id="button">OFF</button>
+
+<script>
+    /*
+   Sélectionnez l'élément de bouton sur la page
+Dans ce scénario, le code existant ajoute un eventListener pour un événement click sur une variable buttonElem. Il s'attend
+à ce que buttonElem soit l'élément du bouton dans l'exemple d'interface utilisateur. Mais cet élément n'est pas encore sélectionné.
+Affectez l'élément bouton à la variable buttonElem. Cliquez sur le bouton pour vérifier que le code fonctionne.
+Astuce: utilisez l'identifiant unique de l'élément de bouton.
+     */
+
+
+    const buttonElem = document.getElementById('button')
+
+        buttonElem.addEventListener('click', () => {
+            const oldText = buttonElem.innerText;
+            return button.innerText = oldText === "ON" ? "OFF" : "ON";
+        });
+
+</script>
+</body>
+</html>

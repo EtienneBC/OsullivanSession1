@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etienne Couture Gestion des erreurs - Examen</title>
+</head>
+
+<body>
+    <button onclick="calculatrice()">Try me!</button>
+    <script>
+        /*
+Dans ce travail, vous devez faire en sorte de gérer les erreurs possible
+dans le cas ou l'utilisateur entre autre chose que des nombres ou que la division
+par 0 est impossible. Dans quel cas, vous devez lui affiche, via un alert, un message
+
+Pour vous aider, vous aurez besoin, pour ce travail des fonctions suivantes:
+throw new Error (https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Statements/throw)
+try/catch (https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Statements/try...catch)
+
+*/
+        function calculatrice() {
+            let premierNombre = prompt('Entrez un premier nombre');
+            let deuxiemeNombre = prompt('Entrez un deuxième nombre');
+
+            if (isNaN(premierNombre) || isNaN(deuxiemeNombre || premierNombre == '' || deuxiemeNombre == '')) {
+                throw new Error('Vous devez entrer des nombres');
+
+            } else if (deuxiemeNombre == 0) {
+
+                throw new Error('Vous ne pouvez pas diviser par 0');
+
+            } else {
+                alert(premierNombre / deuxiemeNombre);
+            }
+        }
+
+        try {
+            calculatrice();
+        } catch (err) {
+            alert(err.message);
+        } finally {}
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #element {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #333;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-content: space-around;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+<div id="element">
+    Hover Me
+</div>
+
+<script>
+    /*
+Exécute la fonction lorsque le curseur se déplace sur l'élément
+La fonction Javascript changeText modifie le texte à l'intérieur du cercle. Mais encore une fois, il n'y a pas de code pour exécuter cette fonction.
+Complétez le code existant ci-dessous de sorte que la fonction soit appelée lorsque le curseur se déplace sur le cercle.
+Vérifiez que votre code fonctionne en survolant le cercle.
+Astuce: Il existe plusieurs écouteurs d'évènement en Javascript. Pense à regarder ceux qui sont possible à cette adresse:
+https://www.w3schools.com/jsref/dom_obj_event.asp
+     */
+    const element = document.getElementById('element');
+
+    const changeText = () => {
+        element.innerText = 'Thanks!';
+    };
+
+    // Écrire votre code ici
+    element.addEventListener("mouseover", changeText);
+
+</script>
+</body>
+</html>

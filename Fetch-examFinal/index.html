@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dernières nouvelles Reddit - Examen Final</title>
+  <style>
+    body {
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+    body,
+    #result {
+      padding: 15px;
+    }
+
+    ol {
+      padding: 0 15px;
+    }
+
+    ol li {
+      padding-bottom: 5px;
+    }
+
+    input[type="text"] {
+      width: 300px;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+
+    button {
+      background-color: #551163;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="text" placeholder="Entrer le Subreddit ex.: javascript" />
+  <button>Récupérer les publications</button>
+  <div id="result"></div>
+  <script>
+    /*
+Pour ce dernier travail, vous devez faire en sorte de récupérer les 5 derniers articles
+du site Reddit en vous basant sur ce que l'utilisateur aura inscrit dans le champ de recherche,
+puis de les afficher un en dessous de l'autre à l'écran.
+
+Afin de vous aider, un portion du code à déjà été fait (toute la portion qui permet de gérer l'affichage avec
+map et join), ainsi que l'URL d'appel à l'API de reddit avec la variable dynamique pour ajouter le valeur du champ
+dans l'URL.
+
+Votre objectif est de créer ou de compléter la ou les fonctions qui permettent de récupérer les 5 derniers articles,
+en passant la valeur du champ de recherche à la fonction fetchTopFive().
+Mais en n'oubliant pas la gestion des erreurs possible!
+
+Pour vous guider un peu dans ce défis, vous aurez besoin des fonctions suivantes:
+
+async/await (https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Statements/async_function)
+fetch (https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch)
+try/catch (https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Statements/try...catch)
+addEventListener (https://developer.mozilla.org/fr/docs/Web/API/EventTarget/addEventListener)
+querySelector (https://developer.mozilla.org/fr/docs/Web/API/Document/querySelector)
+
+*/
+
+    const button = document.querySelector("button");
+    const subInput = document.querySelector("input");
+    const result = document.querySelector("#result");
+
+    async function handleSubmit(event) {
+      result.innerHTML = "";
+      event.preventDefault();
+      const sub = subInput.value.trim();
+
+      try {
+        const results = await fetchTopFive(sub);
+        renderList(results);
+      } catch (error) {
+        displayError(error);
+      }
+    }
+
+    function displayError(error) {
+      result.insertAdjacentHTML(
+        "beforeend",
+        `<p>Une erreur est survenue: ${error.message}</p>`
+      );
+    }
+
+    function renderList(json) {
+      const posts = json.data.children;
+      result.insertAdjacentHTML(
+        "beforeend",
+         `<ol>
+    ${posts
+      .map(
+        (post) =>
+          `<li>${post.data.title} <a href=${post.data.url} target='_blank'>Link</a></li>`
+      )
+      .join("")}
+  </ol>`
+  );
+    }
+
+    async function fetchTopFive(sub) {
+
+      // sub = la valeur du champ de recherche
+      const endpoint = `https://www.reddit.com/r/${sub}/top/.json?limit=5`;
+      const response = await fetch(endpoint);
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+      const json = await response.json();
+      return json;
+    }
+
+
+    button.addEventListener('click', handleSubmit);
+    subInput.addEventListener('keyup', (event) => {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        button.click();
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fetch</title>
+</head>
+<body>
+<script>
+  /*
+Dans cet exercice, nous allons utiliser l’API Fetch et sa méthode fetch() qui correspondent
+à la “nouvelle façon” d’effectuer des requêtes HTTP. L'API Fetch demande qu'on appel un URL
+distant afin de récupérer des données que nous utiliserons plus tard. Nous avons ici une variable
+URL qui pointe vers l'API https://jsonplaceholder.typicode.com/. À l'aide de Fetch, vous devez
+afficher dans la console la réponse que le serveur vous retournera.
+*/
+
+  let url = 'https://jsonplaceholder.typicode.com/todos/1';
+ 
+  fetch(url)
+  .then (function(response) {
+    return response.json();
+  })
+  .then (function(data) {
+    console.log (data);
+  })
+  .catch(function (error) {
+    console.log(error)
+  })
+
+</script>
+</body>
+</html>

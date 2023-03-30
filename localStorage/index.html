@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        localStorage.setItem('test', '1'); // setItem() permet de créer une clé et une valeur
+        localStorage.test = '2'; // On peut aussi créer une clé et une valeur de cette façon
+
+        alert(localStorage.getItem('test')); // getItem() permet de récupérer la valeur d'une clé
+        alert(localStorage.test); // On peut aussi récupérer la valeur d'une clé de cette façon
+
+        localStorage.removeItem('test'); // removeItem() permet de supprimer une clé et sa valeur
+        delete localStorage.test; // delete permet de supprimer une clé et sa valeur
+        // localStorage.clear(); // clear() permet de supprimer toutes les clés et valeurs
+
+        for(let i=0; i<localStorage.length; i++) {
+          console.log(localStorage.getItem(localStorage.key(i))); // key() permet de récupérer la clé à l'index i
+        }
+
+        localStorage.user = {name: 'Etienne', age: 25}; // On peut stocker des objets dans localStorage
+
+    </script>
+</body>
+</html>

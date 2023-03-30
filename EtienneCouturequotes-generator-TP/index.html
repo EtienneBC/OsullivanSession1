@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur de citations</title>
+    <style>
+        body {
+            background-color: #F2C4D0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.2em;
+            line-height: 1.5;
+            margin: 0 auto;
+            margin-top: 4em;
+            padding: 0;
+            width: 1200px;
+            align-items: center ;
+            text-align: center;
+        }
+        .auteur {
+            color: #2E97F2;
+        }
+        .citations {
+            color: #8C4278;
+        }
+        button {
+           background-color: #0583F2;
+           color: #F2C4D0;
+            border: none;
+            border-radius: 5px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer-container">
+        <p class="citations" id="citations"></p>
+        <p class ='auteur' id="auteur"></p>
+        <button id="generer">Générer</button>
+   </div>
+   <script>
+
+    /* Pour ce TP, vous aurez besoin d'utiliser ceci:
+     Function (https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Functions)
+     addEventListener (https://developer.mozilla.org/fr/docs/Web/API/EventTarget/addEventListener)
+     [Math random] (https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Math/random)
+     [Math floor] (https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Math/floor)
+    */
+    
+    const quotes = [
+    {
+        quote: "Ça ne fait pas grand bien de s'installer dans les rêves en oubliant de vivre.",
+        author: "Albus Dumbledore"
+    },
+    {
+        quote: "Il est impossible de fabriquer ou d'imiter l'amour",
+        author: "Horace Slughorn"
+    },
+    {
+        quote: "Être différent n'est pas une mauvaise chose. Je veux dire que vous êtes assez courageux pour être vous-même.",
+        author: "Luna Lovegood"
+    },
+    {
+        quote: "Si vous voulez savoir comment est un homme, regardez bien comment il traite ses inférieurs, pas ses égaux.",
+        author: "Sirius Black"
+    },
+    {
+        quote: "Ne faites jamais confiance à quelque chose qui peut penser par lui-même si vous ne pouvez pas voir où il garde son cerveau.",
+        author: "Arthur Weasley"
+    },
+    {
+        quote: "Chaque vie humaine a la même valeur et vaut la peine d'être sauvée.",
+        author: "Kingsley Shacklebolt"
+    },
+    {
+        quote: "Prends un biscuit, Potter.",
+        author: "Minerva McGonagall"
+    },
+    {
+        quote: "Le bonheur peut être trouvé même dans les moments les plus sombres, si l'on se souvient seulement d'allumer la lumière.",
+        author: "Albus Dumbledore"
+    },
+    {
+        quote: "Les chaussettes sont les vêtements préférés de Dobby, monsieur !",
+        author: "Dobby"
+    }
+];
+// Générer une citation aléatoire à chaque fois que l'utilisateur clique sur le bouton
+const button = document.getElementById('generer');
+button.addEventListener('click', function() {
+    let random = Math.floor(Math.random() * quotes.length);
+    document.getElementById('citations').innerHTML = quotes[random].quote;
+    document.getElementById('auteur').innerHTML = quotes[random].author;
+});
+
+    </script>
+</body>
+</html>

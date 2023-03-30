@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+   Fonctions - paramètres et arguments (1)
+Lorsque vous appelez une fonction en JavaScript, vous pouvez transmettre des valeurs à la fonction.
+Ces valeurs sont appelées arguments. Afin d'accéder à ces arguments, les fonctions peuvent définir des paramètres.
+Les paramètres sont des variables qui contiennent les valeurs des arguments passés à la fonction.
+Dans le code ci-dessous, nous définissons une fonction multiply qui a un paramètre nommé num.
+La fonction renvoie num multiplié par lui-même. Ensuite, multiply est appelé avec un argument.
+L'argument est la valeur de la variable arg.
+Ajustez le code ci-dessous pour que l'instruction console.log() soit vraie.
+     */
+    const multiply = function (num) {
+        return num * num;
+    };
+
+    const arg = 3;
+
+    const result = multiply(arg);
+    console.log(result === 9);
+
+</script>
+</body>
+</html>

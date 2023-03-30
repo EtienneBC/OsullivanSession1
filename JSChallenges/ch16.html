@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<input type="text" id="firstName" placeholder="Max" value="Max"/>
+<input type="text" id="lastName" placeholder="Musterman" value="Musterman"/>
+<input type="text" id="fullName" placeholder="full name" readonly/>
+<button type="button" id="button">Nom Complet</button>
+<script>
+    /*
+Obtenir le nom complet des entrées
+Étendez le code JavaScript ci-dessous pour interagir avec les éléments HTML affichés.
+Cette fois, nous recherchons le nom complet. Lorsque le bouton est cliqué, combinez les noms des deux premiers champs de saisie.
+Insérez le nom complet dans le troisième champ de saisie.
+Astuce: Vérifiez si votre code fonctionne toujours si vous modifiez le prénom ou le nom de famille.
+Confirmez votre code en cliquant sur le bouton !
+     */
+    const button = document.getElementById('button');
+    button.addEventListener('click' , () => {
+        // Écrire votre code ici
+        const firstName = document.getElementById('firstName').value;
+        const lastName = document.getElementById('lastName').value;
+        const fullName = document.getElementById('fullName');
+        fullName.value = firstName + ' ' + lastName;
+        
+    });
+
+
+</script>
+</body>
+</html>

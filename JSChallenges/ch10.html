@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+Expression de fonction
+Dans cet exercice, nous utilisons une manière légèrement différente de créer une fonction - une expression de fonction.
+Ici, nous créons une fonction et l'assignons à la variable func. Notez que nous omettons le nom de la fonction après
+le mot clé function. Nous appelons cette fonction de la même manière que dans l'exercice précédent. Mais, au lieu d'utiliser
+le nom de la fonction elle-même, nous l'appelons en utilisant le nom de la variable à laquelle la fonction a été affectée.
+Dans le code ci-dessous, nous avons introduit une petite erreur lors de l'appel de la fonction. Trouvez l'erreur
+et exécutez le code pour voir si les mots hello world sont correctement affichés.
+     */
+    const func = function() {
+        return 'hello world';
+    };
+    const result = func('');
+    console.log(result);
+</script>
+</body>
+</html>
